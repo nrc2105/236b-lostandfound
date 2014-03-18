@@ -28,20 +28,17 @@ class ItemsController < ApplicationController
     types.each do |t|
       @type_drop_down << [t.title, t.id]
     end
-    @and_or = [['OR', 1],['AND', 0]]
-    if params[:connector1] == 0
-      connector1 = 'AND'
+    @and_or = [['OR', 'OR'],['AND', 'AND']]
+  end
+
+  # GET /items/do_search(params)
+  def do_search
+    @items = Item.search(params[:title], params[:connector1], params[:description], 
+      params[:connector2], params[:owner], params[:connector3], params[:t][:t_id])
+    if @items != nil
+      render :index
     else
-      connector1 = 'OR'
-    end
-    if params[:connector2] == 0
-      connector2 = 'AND'
-    else
-      connector2 = 'OR'
-    end
-    #Pass the params from search to the model to find the correct items
-    if params[:t] != nil
-      @results = Item.search(params[:title], connector1, params[:description], connector2, params[:owner], params[:t][:t_id])
+      redirect_to search_items_path
     end
   end
 

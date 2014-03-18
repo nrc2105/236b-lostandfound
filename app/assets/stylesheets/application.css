@@ -13,3 +13,35 @@
  */
 
 *=require bootstrap.min
+
+body
+{
+	background-color: red;
+}
+
+table
+{
+	width:100%;
+	border-collapse:collapse;
+}
+table, th, td
+{
+	border: 1px solid black;
+}
+th
+{
+	height:50px;
+	min-width: 75px;
+	background-color: green;
+	color:white;
+
+}
+td
+{
+	text-align:left;
+	height: 50px;
+	vertical-align:center;
+	padding-right:15px;
+}
+
+

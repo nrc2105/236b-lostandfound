@@ -1,3 +1,33 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#title
+{
+	font-weight: bold;
+}
+
+#search
+{
+	text-align: right;
+	font-size: 150%;
+}
+
+#homelink
+{
+	text-align: right;
+	font-size: 150%;
+}
+label
+{
+	width:12em;
+	padding-top: 12px;
+}
+
+body
+{
+	background: #E0E0E0
+}
+

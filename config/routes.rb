@@ -2,6 +2,7 @@ Lostandfound::Application.routes.draw do
   resources :items do
     collection do
       get 'search'
+      get 'do_search'
     end
   end
 

@@ -1,10 +1,18 @@
-<h1>Listing items</h1>
-
-<table>
-  <thead>
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="/app/assets/stylesheets/application.css"
+ </head>
+<h1>Items:</h1>
+<div id="search">
+<%= link_to 'Search', search_items_path %>
+</div>
+<table id="item_table">
+  <thead id="categories">
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>Owner</th>
       <th>Type</th>
       <th></th>
       <th></th>
@@ -12,11 +20,12 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="item_list">
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.title %></td>
+        <td id="title"><%= item.title %></td>
         <td><%= item.description %></td>
+        <td><%= item.owner %></td>
         <td><%= item.type.title %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
@@ -29,3 +38,4 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
+</html>

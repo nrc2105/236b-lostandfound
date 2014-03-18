@@ -1,43 +1,21 @@
+<body>
 <h1>Search</h1>
 
-<%= form_tag("/items/search", method: "get") do %>
-	<%= label_tag(:title, "Search by Title:") %>
+<div id="homelink"><%= link_to 'Home', items_path %></div>
+
+<%= form_tag(do_search_items_path, method: "get") do %>
+	<%= label_tag(:title, "Title:") %></br>
 	<%= text_field_tag(:title) %>
 	<%= select_tag(:connector1, options_for_select(@and_or)) %></br>
-	<%= label_tag(:description, "Description:") %>
+	<%= label_tag(:description, "Description:") %></br>
 	<%= text_field_tag(:description) %>
 	<%= select_tag(:connector2, options_for_select(@and_or)) %></br>
-	<%= label_tag(:owner, "Owner:") %>
+	<%= label_tag(:owner, "Owner:") %></br>
 	<%= text_field_tag(:owner) %>
+	<%= select_tag(:connector3, options_for_select(@and_or)) %></br>
+	<%= label_tag(:t, "Type:") %></br>
 	<%= select(:t, :t_id, @type_drop_down)%>
 	<%= submit_tag("Search") %>
 <% end %>
+</body>
 
-<% if @results != nil %>
-<h2>Search Results:</h2>
-<table>
-  <thead>
-   <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @results.each do |item| %>
-      <tr>
-        <td><%= item.title %></td>
-        <td><%= item.description %></td>
-        <td><%= item.type.title %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%end%>
