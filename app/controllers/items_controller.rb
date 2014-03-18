@@ -23,6 +23,26 @@ class ItemsController < ApplicationController
 
   # GET /items/search
   def search
+    types = Type.all
+    @type_drop_down = [[]]
+    types.each do |t|
+      @type_drop_down << [t.title, t.id]
+    end
+    @and_or = [['OR', 1],['AND', 0]]
+    if params[:connector1] == 0
+      connector1 = 'AND'
+    else
+      connector1 = 'OR'
+    end
+    if params[:connector2] == 0
+      connector2 = 'AND'
+    else
+      connector2 = 'OR'
+    end
+    #Pass the params from search to the model to find the correct items
+    if params[:t] != nil
+      @results = Item.search(params[:title], connector1, params[:description], connector2, params[:owner], params[:t][:t_id])
+    end
   end
 
   # POST /items
